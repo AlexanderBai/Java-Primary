@@ -51,7 +51,8 @@
 >  * @Author AlexanderBai
 >  * @data 2019/3/13 20:09
 >  */
-> public class TestFile { 
+> public class TestFile {
+> 
 >     public static void main(String[] args) {
 >         File file = new File("G:/demo/d");
 >         if (!file.exists()) {
@@ -62,6 +63,17 @@
 >         System.out.println("file.isFile() = " + file.isFile());
 >         System.out.println("file.isDirectory() = " + file.isDirectory());
 >         System.out.println("file.getName() = " + file.getName());
+> 
+>         File file1 = new File("G:/test");
+>         if (!file1.exists()) {
+>             file1.mkdirs();
+>         }
+>         //以file1为父目录创建file2
+>         File file2 = new File(file1, "test");
+>         if (!file2.exists()) {
+>             file2.mkdirs();
+>         }
+>         System.out.println("file1.getAbsolutePath() = " + file2.getAbsolutePath());
 >     }
 > }
 > /**
@@ -71,6 +83,7 @@
 > file.isFile() = false
 > file.isDirectory() = true
 > file.getName() = d
+> file1.getAbsolutePath() = G:\test\test
 > */
 > ```
 
