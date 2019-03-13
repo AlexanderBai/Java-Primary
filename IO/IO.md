@@ -22,12 +22,13 @@
 >         File file=new File("test");
 >         File file1 = new File("demo/d");
 >         if (!file.exists()) {
->             System.out.println(file.mkdir());
+>             System.out.println(file.mkdir());//创建由此抽象路径名命名的目录
 >         }else {
 >             System.out.println("file.delete() = " + file.delete());
 >         }
 > 
 >         if (!file1.exists()) {
+>             //创建由此抽象路径名命名的目录，包括任何必需但不存在的父目录
 >             System.out.println("file1.mkdirs() = " + file1.mkdirs());
 >         }else{
 >             System.out.println("file1.delete() = " + file1.delete());
