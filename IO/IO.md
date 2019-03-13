@@ -42,11 +42,37 @@
 
 ②绝对路径创建文件
 
-> ```
+> ```java
+> package testfile;
 > 
-> ```
->
+> import java.io.File;
 > 
+> /**
+>  * @Author AlexanderBai
+>  * @data 2019/3/13 20:09
+>  */
+> public class TestFile { 
+>     public static void main(String[] args) {
+>         File file = new File("G:/demo/d");
+>         if (!file.exists()) {
+>             System.out.println("file.mkdirs() = " + file.mkdirs());//换成mkdir()类似
+>         }
+>         System.out.println("file.getAbsolutePath() = " + file.getAbsolutePath());
+>         System.out.println("file.getParentFile() = " + file.getParentFile());
+>         System.out.println("file.isFile() = " + file.isFile());
+>         System.out.println("file.isDirectory() = " + file.isDirectory());
+>         System.out.println("file.getName() = " + file.getName());
+>     }
+> }
+> /**
+> 运行结果：
+> file.getAbsolutePath() = G:\demo\d
+> file.getParentFile() = G:\demo
+> file.isFile() = false
+> file.isDirectory() = true
+> file.getName() = d
+> */
+> ```
 
 ####2、文件常用方法1
 
