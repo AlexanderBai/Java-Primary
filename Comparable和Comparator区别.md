@@ -5,6 +5,8 @@
 > Comparable是**内部比较器**（即用于实现了Comparable接口的类与自身进行比较），称自然排序；
 >
 > 至于一个类与实现了Comparable接口的另一个类的比较则依赖于CompareTo方法的实现。
+>
+> 返回值有3个
 
 ```java 
 /**
@@ -17,7 +19,14 @@ public class Domain implements Comparable<Domain> {
     public Domain(String str) {
         this.str = str;
     }
-
+    
+    public String getStr() {
+        return str;
+    }
+    public void setStr(String str) {
+        this.str = str;
+    }
+    
     @Override
     public int compareTo(Domain domain) {
         if (this.str.compareTo(domain.str)>0) {
@@ -138,4 +147,56 @@ public class Test {
 >![1552555189479](C:\Users\AlexanderBai\AppData\Roaming\Typora\typora-user-images\1552555189479.png)
 
 ### 2、Comparator
+
+一般使用Comparator有两种方式
+
+①、不支持自己和自己比较
+
+②、对自然排序方法ComparaTo不满意，自己重写
+
+假设对以上的ComparaTo方法不满意,DoMian类不变
+
+```java
+import java.util.Comparator;
+
+/**
+ * @Author AlexanderBai
+ * @data 2019/3/14 17:30
+ */
+public class TestComparator implements Comparator<Domain> {
+
+    @Override
+    public int compare(Domain domain1, Domain domain2) {
+        if (domain1.getStr().compareTo(domain2.getStr()) > 0) {
+            return 1;
+        }
+        else if (domain1.getStr().compareTo(domain2.getStr()) == 0){
+            return 0;
+        }
+        else
+            return -1;
+    }
+
+    public static void main(String[] args) {
+        Domain domain = new Domain("a");
+        Domain domain1 = new Domain("a");
+        Domain domain2 = new Domain("B");
+        Domain domain3 = new Domain("c");
+        TestComparator testComparator=new TestComparator();
+        System.out.println("testComparator.compare(domain,domain1) = " + testComparator.compare(domain, domain1));
+        System.out.println("testComparator.compare(domain,domain2) = " + testComparator.compare(domain1, domain2));
+        System.out.println("testComparator.compare(domain2,domain3) = " + testComparator.compare(domain2, domain3));
+    }
+}
+```
+
+
+
+>运行结果：
+>
+>testComparator.compare(domain,domain1) = 0
+>testComparator.compare(domain,domain2) = 1
+>testComparator.compare(domain2,domain3) = -1
+
+
 
