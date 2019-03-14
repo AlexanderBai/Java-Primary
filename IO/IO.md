@@ -89,6 +89,38 @@
 
 ####2、文件常用方法1
 
+```java
+@Test
+    public void test() {
+
+        File file = new File("G:/test/ideaIU-2018.3.3.exe");
+        System.out.println("file.exists() = " + file.exists());
+        System.out.println("file.isDirectory() = " + file.isDirectory());
+        System.out.println("file.isFile() = " + file.isFile());
+        System.out.println("file.isHidden() = " + file.isHidden());
+        System.out.println("file.length() = " + file.length());
+
+        File file1 = new File("G:/test");
+        System.out.println("file1.list() = " + file1.list());
+        System.out.println("file1.listFiles() = " + file1.listFiles());
+
+        File file2 = new File("G:/test/test.txt");
+        File file3 = new File("G:/test/demo.txt");
+        System.out.println("file2.exists() = " + file2.exists());
+        long time=file2.lastModified();
+        Date date = new Date(time);
+        System.out.println("file2.lastModified() = " + date);
+        System.out.println("file2.setLastModified(0) = " + file2.setLastModified(0));
+        System.out.println("file2.renameTo(file3) = " + file2.renameTo(file3));
+    }
+```
+
+运行结果：
+
+![运行结果](C:\Users\AlexanderBai\AppData\Roaming\Typora\typora-user-images\1552537656583.png)
+
+
+
 ####3、文件常用方法2
 
 ####4、遍历文件夹
